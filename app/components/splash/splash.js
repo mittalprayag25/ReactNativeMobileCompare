@@ -18,8 +18,8 @@ export default class Splash extends Component{
   }
   render(){
     setTimeout(function(){
-      Actions.login();
-    }, 3000);
+      Actions.introductory();
+    }, 1000);
     const animatedStyle = {opacity : this.animatedValue}
     return(
 
