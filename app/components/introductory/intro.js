@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Image, Text, Animated, Easing,TouchableOpacity} from 'react-native';
-import {Actions} from 'react-native-router-flux';
+import {StyleSheet, View, Image, Text, Animated, Button, Easing,TouchableOpacity} from 'react-native';
 
 export default class Introductory extends Component{
-
-
   constructor(){
     super();
     this.clickCount = 0;
+    this.navigate = "";
+
     this.state = {selectedURI : require('./../../assets/img/xamarin.png'),
       uri : [
       require('./../../assets/img/xamarin.png'),
@@ -15,9 +14,15 @@ export default class Introductory extends Component{
       require('./../../assets/img/ios.jpeg'),
       require('./../../assets/img/react.jpeg'),
       require('./../../assets/img/prayag.jpg')
-    ],
-    introductoryButtonText: "Next"}
+    ],introductoryButtonText: "Next"};
+
   }
+
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Show Off',
+    headerRight: <Button title="continue"/>,
+  });
+
 
   skip(){
     console.log("skip");
@@ -37,17 +42,19 @@ export default class Introductory extends Component{
         this.setState({selectedURI : this.state.uri[4], introductoryButtonText : "Finish"});
       break;
       default:
-      Actions.home();
+        this.navigate('Home');
       break;
 
     }
   }
 
   continue(){
-    Actions.home();
+    this.navigate('SurveyNavigator');
   }
   render(){
     let re = require('./../../assets/img/xamarin.png');
+    const { navigate } = this.props.navigation;
+    this.navigate = navigate; // to make navigate global to use
     return(
       <View style={styles.container}>
         <View style={styles.contentContainer}>

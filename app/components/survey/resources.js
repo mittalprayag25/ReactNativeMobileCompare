@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Image, Text, Animated, Easing} from 'react-native';
-import {Actions} from 'react-native-router-flux';
+import {StyleSheet, View, Image, Text, Animated, Button, Easing,TouchableOpacity} from 'react-native';
 
-export default class Splash extends Component{
+import { StackNavigator } from 'react-navigation';
+
+export default class Resources extends Component{
 
   componentWillMount(){
     this.animatedValue = new Animated.Value(1);
@@ -29,11 +30,7 @@ export default class Splash extends Component{
     return(
 
       <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <Animated.View style={styles.box, animatedStyle}>
-            <Text style={styles.appLogo}>App Decide</Text>
-            </Animated.View>
-          </View>
+
       </View>
     );
   }
