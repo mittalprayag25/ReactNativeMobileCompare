@@ -5,6 +5,9 @@ import { TabNavigator } from 'react-navigation';
 
 import Performance from './../survey/performance'
 import Resources from './../survey/resources'
+import Home from './../home/home'
+import Main from './../main/home'
+
 
 export default class SurveyNavigator extends Component{
   render(){
@@ -14,7 +17,7 @@ export default class SurveyNavigator extends Component{
   }
 
   static navigationOptions = ({ navigation }) => ({
-    title: 'Home',
+    title: 'Resources',
     headerLeft: null
   });
 
@@ -25,10 +28,10 @@ export const TabNavigation = TabNavigator({
     screen: Performance
   },
   Resources: {
-    screen: Resources
+    screen: Home
   },
   Market: {
-    screen: Resources
+    screen: Main
   },
   Preference: {
     screen: Resources

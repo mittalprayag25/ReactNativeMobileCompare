@@ -4,35 +4,30 @@ import {StyleSheet, View, Image, Text, Animated, Button, Easing,TouchableOpacity
 import { StackNavigator } from 'react-navigation';
 
 export default class Performance extends Component{
-
-  componentWillMount(){
-    this.animatedValue = new Animated.Value(1);
-  }
-
   static navigationOptions = ({ navigation }) => ({
-    header: null
+    title: 'Performance',
+    headerLeft: null
   });
-
-  componentDidMount(){
-    Animated.timing(
-      this.animatedValue,{
-        toValue: .6,
-        easing: Easing.bounce, // Like a ball
-        duration: 2000
-    }).start()
-  }
   render(){
-    const { navigate } = this.props.navigation;
-    setTimeout(function(){
-      navigate('Introductory'); // Mention the name here where to navigate
-    }, 1000);
-    const animatedStyle = {opacity : this.animatedValue}
     return(
-
-      <View style={styles.container}>
-
+    <View style={{ flex: 2,flexDirection: 'column',justifyContent: 'center',alignItems : 'flex-end'}}>
+        <View style={{height: 50, backgroundColor: 'powderblue', paddingRight : 10, paddingRight : 20, paddingLeft : 30, flex : 2}}>
+          <Text style={{backgroundColor : 'powderblue'}} >Continue</Text>
+          <Text style={{backgroundColor : 'powderblue'}} >Continue</Text>
+          <Text style={{backgroundColor : 'powderblue'}} >Continue</Text>
+          <Text style={{backgroundColor : 'powderblue'}} >Continue</Text>
+          <Text style={{backgroundColor : 'powderblue'}} >Continue</Text>
+        </View>
+        <View style={{width: 50, height: 50, backgroundColor: 'skyblue', flex : 2, flexGrow : 20}}>
+          <Text style={{backgroundColor : 'skyblue'}} >Continue</Text>
+          <Text style={{backgroundColor : 'skyblue'}} >Continue</Text>
+          <Text style={{backgroundColor : 'skyblue'}} >Continue</Text>
+          <Text style={{backgroundColor : 'skyblue'}} >Continue</Text>
+          <Text style={{backgroundColor : 'skyblue'}} >Coninue</Text>
+        </View>
+        <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
       </View>
-    );
+    )
   }
 }
 

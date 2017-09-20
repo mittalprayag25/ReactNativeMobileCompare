@@ -1,38 +1,34 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Image, Text, Animated, Button, Easing,TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Image, Text,Slider, Button} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
 
 export default class Resources extends Component{
 
-  componentWillMount(){
-    this.animatedValue = new Animated.Value(1);
-  }
-
-  static navigationOptions = ({ navigation }) => ({
-    header: null
-  });
-
-  componentDidMount(){
-    Animated.timing(
-      this.animatedValue,{
-        toValue: .6,
-        easing: Easing.bounce, // Like a ball
-        duration: 2000
-    }).start()
-  }
-  render(){
+  constructor(props){
+    super(props);
+    this.state = {selectedResources : 10};
     const { navigate } = this.props.navigation;
-    setTimeout(function(){
-      navigate('Introductory'); // Mention the name here where to navigate
-    }, 1000);
-    const animatedStyle = {opacity : this.animatedValue}
+    this.navigate = navigate; // to make navigate global to use
+  }
+
+
+  render(){
     return(
+    <View>
+      <Text style={styles.resourceLabelText}>Please select the number of resources for area {this.state.selectedResources}</Text>
+      <View>
+          <Slider minimumValue={0} maximumValue={100} step={this.state.selectedResources}
+          onSlidingComplete={(value) => this.setState({selectedResources: value})}></Slider>
+        </View>
 
-      <View style={styles.container}>
-
+        <Button onPress={this.next.bind(this)} title="Next"/>
       </View>
-    );
+    )
+  }
+
+  next(){
+    this.navigate('Performance',{ name: 'Jane' }); //navigating between tabs
   }
 }
 
